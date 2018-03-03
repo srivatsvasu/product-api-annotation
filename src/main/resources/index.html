@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+<ul></ul>
+
+<script type="text/javascript">
+
+    if(!!window.EventSource){
+        var evtSource = new Event('products/events');
+        var eventList = document.querySelector('ul');
+        evtSource.onMessage = function(e){
+            var newElement = document.createElement('li');
+            newElement.textContent = "Event: " + e.data;
+            eventList.appendChild(newElement);
+
+        }
+    }else{
+    alert('Browser does not support SSE');
+    }
+
+</script>
+
+<ul></ul>
+</body>
+</html>
